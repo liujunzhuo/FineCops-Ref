@@ -365,7 +365,6 @@ class RefExpEvaluatorFromJsonl(object):
                     if max_index > 0 and max(iou[:max_index]) >= self.iou_thrs:
                         recall[k] += 1.0
                 recall_count += 1.0
-            print(f"count recall: {recall_count}")
             save_recall = {}
             mean_recall = 0.0
             for key, value in recall.items():
@@ -382,6 +381,7 @@ class RefExpEvaluatorFromJsonl(object):
         auroc, aupr, fpr = get_measures(in_score_level[1], out_score)
         print(f"Overall AUROC--------------")
         print('AUROC:\t\t\t{:.2f}'.format(100 * auroc))
+        print('FPR{:d}:\t\t\t{:.2f}'.format(int(100 * 0.95), 100 * fpr))
         print('AUPR:\t\t\t{:.2f}'.format(100 * aupr))
         count_negative = dict()
         overall_dict = {tuple(['overall', 0, 0]): [round(auroc * 100, 2), round(fpr * 100, 2), round(100 * aupr, 2),
