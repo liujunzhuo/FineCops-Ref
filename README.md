@@ -46,6 +46,7 @@ The vanilla annotations consist of positive and negative data samples with speci
 The coco format annotations is consistent with [Refcoco/+/g](https://zenodo.org/record/4729015/files/mdetr_annotations.tar.gz?download=1).
 
 You can load the annotations simply with:
+
 ```python
 # if you want to load the image
 torchvision.datasets.CocoDetection(image_root, annfile)
@@ -57,7 +58,22 @@ pycocotools.coco.COCO(annfile)
 
 ## Benchmarking
 
-example of evaluation at [eval_metric.py](./evaluation/eval_metric.py)
+### Specialist
+
+
+
+### MLLMs
+
+example of evaluation at [eval_metric.py](./evaluation/eval_metric.py) for [ferret](https://github.com/apple/ml-ferret)
+
+prediction_file should be in jsonl format, for each line, it should be like:
+`{"image_id": 1, "text": "The boy riding the brown horse positioned ahead of the white truck. in the image [526, 15, 798, 757].", "scores_logits_average": [51.3125], "scores_prob_average": [0.85205078125], "sum_log_prob": [0.0029430389404296875]}`
+
+For other model, you can simply modify the following part:
+
+1. [VOCAB SIZE](https://github.com/liujunzhuo/FineCops-Ref/blob/56db844f0fee222963768e6e03111b4fd42a6ca2/evaluation/eval_metric.py#L133). which is the scale of the coordinate of the model. for example, the llava is 1 and ferret is 1000.
+2. [decode the box form caption](https://github.com/liujunzhuo/FineCops-Ref/blob/56db844f0fee222963768e6e03111b4fd42a6ca2/evaluation/eval_metric.py#L146)
+
 """
 Usage:
 
