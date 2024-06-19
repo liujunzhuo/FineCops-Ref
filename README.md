@@ -1,7 +1,8 @@
 ## Datasets
+- GQA Image: you can download for there [website](https://downloads.cs.stanford.edu/nlp/data/gqa/images.zip)
+- Annotations and negative images: [Dataset](https://figshare.com/s/e323fe078924c8b36043?file=47091109). We provide both vanilla and coco format annotations.
 
-- [Dataset](https://figshare.com/s/e323fe078924c8b36043?file=47091109)
-consists of positive and negative data samples with specific keys and structures as described below:
+The vanilla annotations consist of positive and negative data samples with specific keys and structures as described below:
 
 ### Positive Data Format
 
@@ -41,6 +42,29 @@ consists of positive and negative data samples with specific keys and structures
 }
 ```
 
+### Usage
+The coco format annotations is consistent with [Refcoco/+/g](https://zenodo.org/record/4729015/files/mdetr_annotations.tar.gz?download=1).
+
+You can load the annotations simply with:
+```python
+# if you want to load the image
+torchvision.datasets.CocoDetection(image_root, annfile)
+# if you want to load the annotations only
+pycocotools.coco.COCO(annfile)
+```
+
+
+
 ## Benchmarking
+
+example of evaluation at [eval_metric.py](./evaluation/eval_metric.py)
+"""
+Usage:
+
+python eval/eval_metric.py \
+    --prediction_file xxx \
+    --annotation_file xxx \
+    --save_dir xxx
+"""
 
 ## Training
