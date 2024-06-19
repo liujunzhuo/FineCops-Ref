@@ -59,8 +59,32 @@ pycocotools.coco.COCO(annfile)
 
 To perform benchmark evaluation, you first need to run the model inference on the benchmark dataset and save its prediction results, including image_id, bounding box/response, and the corresponding score for each box. Note that the score is only used to calculate recall and AUROC. Then, calculate the metrics. 
 
+### Inference
+
+Here is an example for [Hugging Face model inference](evaluation/run_hf_model.py) for CogVLM
+
+```sh
+python evaluation/run_hf_model.py
+--image_path <image_root path> \
+--data_path <dataset>_coco_format.json \
+--answers-file <path_to_prediction_file>.jsonl \
+--chunk-idx 0 \
+--num-chunks 1 \
+--bf16 \
+--from_pretrained THUDM/cogvlm-grounding-generalist-hf \
+# --local_tokenizer <tokenizer path>
+```
+
+For other models, you should modify the following parts:
+- [get_score](./evaluation/run_hf_model.py#L88)
+- [instruction template](evaluation/run_hf_model.py#L58)
+
+Additionally, adjust the chat template or other parts as specified by the different models.
+
+### Evaluation
+
 Below is an introduction to the result saving format and evaluation script.
-### Specialist
+#### Specialist
 To evaluate the [MM-GDINO](https://github.com/open-mmlab/mmdetection/tree/main/configs/mm_grounding_dino), you can use the [eval_metric_mmdet.py](./evaluation/eval_metric_mmdet.py)
 
 `eval_metric_mmdet.py` can be directly served as the metric in mmdetection framework.
@@ -84,7 +108,7 @@ python eval/eval_metric_mmdet.py \
   ```
 
 
-### MLLMs
+#### MLLMs
 
 Example of evaluation for [ferret](https://github.com/apple/ml-ferret) at [eval_metric.py](./evaluation/eval_metric.py)
 
