@@ -57,9 +57,11 @@ pycocotools.coco.COCO(annfile)
 
 ## Benchmarking
 
-To perform benchmark evaluation, you first need to run the model inference on the benchmark dataset and save its prediction results, including image_id, bounding box/response, and the corresponding score for each box. Note that the score is only used to calculate recall and AUROC. Then, calculate the metrics. 
+To perform benchmark evaluation, you first need to run the model inference on the benchmark dataset and save its prediction results, **including image_id, bounding box/response, and the corresponding score for each box**. Note that the score is only used to calculate recall and AUROC. **Then, calculate the metrics.** 
 
 ### Inference
+
+For most specialists and some MLLMs, they provide the RefCOCO (COCO format) evaluation script. You can simply replace the annfile and image_root, then save the prediction results.
 
 Here is an example for [Hugging Face model inference](evaluation/run_hf_model.py) for CogVLM
 
@@ -77,13 +79,13 @@ python evaluation/run_hf_model.py
 
 For other models, you should modify the following parts:
 - [get_score](./evaluation/run_hf_model.py#L88)
-- [instruction template](evaluation/run_hf_model.py#L58)
-
-Additionally, adjust the chat template or other parts as specified by the different models.
+- [instruction template](./evaluation/run_hf_model.py#L58)
+- Additionally, adjust the chat template, input format or other parts as specified by the different models.
 
 ### Evaluation
 
 Below is an introduction to the result saving format and evaluation script.
+
 #### Specialist
 To evaluate the [MM-GDINO](https://github.com/open-mmlab/mmdetection/tree/main/configs/mm_grounding_dino), you can use the [eval_metric_mmdet.py](./evaluation/eval_metric_mmdet.py)
 
