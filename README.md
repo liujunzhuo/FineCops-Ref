@@ -152,3 +152,24 @@ For evaluating other models, you may need to modify the following parts:
    ```
 
 ## Training
+
+### MM Grounding DINO
+
+To train the MM Grounding DINO model, please follow the installation guidelines and usage instructions provided in the [mmdetection repository](https://github.com/open-mmlab/mmdetection/blob/main/configs/mm_grounding_dino/README.md).
+
+1. **Convert the Dataset**:
+   First, convert your dataset to the format used by mmdet with the following command:
+   ```bash
+   python ./training/util/refcoco2ovdg.py {dataset_path} -o {save_path}
+   ```
+
+2. **Move the Config File**:
+   Move the configuration file in [training](./training) to the mmdetection directory. You can modify the config file as needed. Refer to the mmdetection documentation for guidance.
+
+3. **Run the Training**:
+   Execute the training script with 4 GPUs and a batch size of 8. Use the following command:
+   ```bash
+   ./tools/dist_train.sh configs/mm_grounding_dino/{your_config_path}/grounding_dino_swin-t_finetune_4xb8_5e_{positive/all}.py 4
+   ```
+
+Make sure to adjust the `{dataset_path}`, `{save_path}`, and `{your_config_path}` placeholders with your actual paths and filenames.
