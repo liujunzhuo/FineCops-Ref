@@ -12,7 +12,7 @@ Referring Expression Comprehension (REC) is a crucial cross-modal task that obje
 
 ## Datasets
 - GQA Image: you can download for there [website](https://downloads.cs.stanford.edu/nlp/data/gqa/images.zip)
-- Annotations and negative images: [Dataset](https://figshare.com/s/e323fe078924c8b36043?file=47091109). We provide both vanilla and coco format annotations.
+- Annotations and negative images: [Dataset](https://figshare.com/s/e323fe078924c8b36043). We provide both vanilla and coco format annotations.
 
 The vanilla annotations consist of positive and negative data samples with specific keys and structures as described below:
 
@@ -55,7 +55,7 @@ The vanilla annotations consist of positive and negative data samples with speci
 ```
 
 ### Usage
-The coco format annotations is consistent with [Refcoco/+/g](https://zenodo.org/record/4729015/files/mdetr_annotations.tar.gz?download=1).
+The coco format annotations is consistent with [Refcoco/+/g](https://zenodo.org/record/4729015/files/mdetr_annotations.tar.gz?download=1). Note that the box annotations is in xywh format.
 
 You can load the annotations simply with:
 
