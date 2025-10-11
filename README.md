@@ -17,7 +17,8 @@ Referring Expression Comprehension (REC) is a crucial cross-modal task that obje
 
 ## Datasets
 - GQA Image: you can download for there [website](https://downloads.cs.stanford.edu/nlp/data/gqa/images.zip)
-- Annotations and negative images: [Dataset](https://figshare.com/articles/dataset/FineCops-Ref_A_new_Dataset_and_Task_for_Fine-Grained_Compositional_Referring_Expression_Comprehension/26048050). We provide both vanilla and coco format annotations.
+- Annotations and negative images: [Dataset (figshare.com)](https://figshare.com/articles/dataset/FineCops-Ref_A_new_Dataset_and_Task_for_Fine-Grained_Compositional_Referring_Expression_Comprehension/26048050). We provide both vanilla and coco format annotations.
+    - Mirror Link [Dataset (pan.baidu)](https://pan.baidu.com/s/1IZqQIlx80x63GJqKjGiheA?pwd=k933)
 
 The vanilla annotations consist of positive and negative data samples with specific keys and structures as described below:
 
